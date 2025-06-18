@@ -1,0 +1,31 @@
+:root {
+    /* Colors */
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --grey-300: #D5D5D5;
+    --grey-400: #8B96A5;
+
+    --blue-400: #1080E5;
+    --blue-800: #2C2C2C;
+    --primary: #313131;
+
+    /* Rounded */
+    --rounded-md: 12px;
+
+    /* Container */
+    --container-size: 1280px;
+    --container-md: 910px;
+
+    /* Font Size */
+    --text-xxs: 12px;
+    --text-xs: 14px;
+    --text-sm: 16px;
+    --text-md: 20px;
+    --text-lg: 24px;
+    --text-3xl: 40px;
+
+    /* Font Weight */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+}
