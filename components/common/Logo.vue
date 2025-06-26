@@ -1,6 +1,6 @@
 <template>
-    <router-link to="/" class="logo-link" :style="{ '--logo-width': logoSize }">
-        <img :src="logo" class="logo-image" alt="logo">
+    <router-link to="/" class="logo-link">
+        <img :src="logo" :class="logoClass" alt="logo">
     </router-link>
 </template>
 
@@ -31,13 +31,8 @@
                 return this.type === 'black' ? logoBlack : logoWhite
             },
 
-            logoSize() {
-                switch (this.size) {
-                    case 'sm':
-                        return '165px'
-                    case 'md':
-                        return '265px'
-                }
+            logoClass() {
+                return `logo-image logo-image--${this.size}`
             }
         }
     }
@@ -45,6 +40,14 @@
 
 <style scoped>
 .logo-image {
-    width: var(--logo-width);
+    display: block;
+}
+
+.logo-image--sm {
+    width: 165px;
+}
+
+.logo-image--md {
+    width: 265px;
 }
 </style>

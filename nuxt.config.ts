@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/i18n'],
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      categoriesApiUrl: process.env.API_URL,
+    }
+  },
   i18n: {
     locales: [
       { code: 'en', domain: 'localhost:3000', file: 'en.json' },

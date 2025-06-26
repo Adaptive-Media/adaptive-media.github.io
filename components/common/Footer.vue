@@ -8,7 +8,7 @@
                 <div>(+371) 22324246</div>
                 <a href="https://uk.pickbest.org/product/lego-star-wars-10236-ewok-village-zestaw/B00EU7TW6W" target="_blank">info@pickbest.org</a>
             </div>
-            <Logo type="white" size="md" />
+            <Logo type="white" class="footer-logo" size="md" />
             <div class="footer-column">
                <router-link to="/">Categories</router-link>
                <router-link to="/">About Us</router-link>
@@ -70,7 +70,6 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    font-family: 'Inter', sans-serif;
     font-size: var(--text-md);
     font-weight: var(--font-regular);
     color: white;
@@ -79,12 +78,91 @@ footer {
 .footer__container .footer-column a {
     color: white;
     text-decoration: underline;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.footer__container .footer-column div {
+    font-family: 'Inter', sans-serif;
 }
 
 footer div:last-child {
     font-size: 18px;
     color: white;
     text-align: center;
+}
+
+
+@media screen and (max-width: 1300px) {
+    footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .footer__container img {
+        right: -20px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .footer__container img {
+            display: none;
+        }
+        .footer__container .footer-column {
+            font-family: var(--text-sm);
+        }
+
+        footer :deep(.logo-image) {
+            max-width: 165px;
+        }
+
+        footer div:last-child {
+            font-size: var(--text-sm);
+        }
+    }
+
+
+    @media screen and (max-width: 768px) {
+        .footer__container .footer-column {
+            font-size: var(--text-xs);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .footer__container {
+            flex-direction: column;
+            align-items: center;
+            gap: 64px;
+        }
+
+        .footer__container .footer-column {
+            font-size: var(--text-md);
+            text-align: center;
+        }
+
+        .footer__container {
+            margin-bottom: 64px;
+            font-size: 18px;
+        }
+
+        footer .footer-logo {
+            order: 1;
+        }
+
+        footer :deep(.logo-image) {
+            max-width: 265px;
+        }
+
+
+        .footer__container .footer-column {
+            order: 2;
+        }
+
+        footer {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+    }
 }
 
 </style>

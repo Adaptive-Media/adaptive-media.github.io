@@ -65,7 +65,7 @@
                     <li>The perfect grooming tool to keep your beloved cat looking sleek and tidy! Say hello to our Removable Pet Corner</li>
                 </ul>
             </div>
-            <div>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div>
+            <div class="disclaimer">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div>
             
         </div>
     </section>
@@ -152,6 +152,39 @@ h3 {
     color: var(--primary);
     font-weight: var(--font-medium);
     line-height: 144%;
+}
+
+@media screen and (max-width: 768px) {
+    .path{
+        display: none;
+    }
+
+    .about__container-item h4 {
+        font-size: var(--text-lg);
+    }
+
+    .about__container div:last-child {
+        margin-top: 0;
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+    }
+
+    .about__container-item:nth-child(3) h4,
+    .about__container-item:nth-child(4) h4,
+    .about__container-item:nth-child(5) h4 {
+        font-size: var(--text-md);
+    }
+    .about__container-item:nth-child(6) h4 {
+        font-size: var(--text-sm);
+    }
+
+    .about__container-item:nth-child(8) {
+        margin-bottom: 24px;
+    }
+
+   .disclaimer{
+    font-size: var(--text-xxs) !important;
+   }
 }
 
 </style>
