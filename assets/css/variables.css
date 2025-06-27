@@ -2,14 +2,18 @@
     /* Colors */
     --color-black: #000000;
     --color-white: #ffffff;
+    --grey-100: #E8ECFF;
     --grey-300: #D5D5D5;
+    --grey-350: #43423D;
     --grey-400: #8B96A5;
 
+    --blue-300: #59B1FF;
     --blue-400: #1080E5;
     --blue-800: #2C2C2C;
     --primary: #313131;
 
     /* Rounded */
+    --rounded-xs: 5px;
     --rounded-md: 12px;
 
     /* Container */
