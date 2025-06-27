@@ -27,8 +27,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "github-pages",
-    routeRules: {
-      '/api/**': { static: true }
-    }
+    // routeRules: {
+    //   '/api/**': { static: true }
+    // }
   }
 })
