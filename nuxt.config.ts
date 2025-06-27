@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   ssr: false,
   app: {
-    baseURL: process.env.NODE_ENV || '/',
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     buildAssetsDir: 'assets'
   },
   nitro: {
