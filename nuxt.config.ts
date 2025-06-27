@@ -26,6 +26,9 @@ export default defineNuxtConfig({
     buildAssetsDir: 'assets'
   },
   nitro: {
-    preset: "github-pages"
+    preset: "github-pages",
+    routeRules: {
+      '/api/**': { static: true }
+    }
   }
 })
