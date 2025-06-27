@@ -22,13 +22,9 @@ export default defineNuxtConfig({
   },
   ssr: false,
   app: {
-    // baseURL: process.env.NUXT_APP_BASE_URL || '/',
     buildAssetsDir: 'assets'
   },
   nitro: {
     preset: "github-pages",
-    // routeRules: {
-    //   '/api/**': { static: true }
-    // }
   }
 })
