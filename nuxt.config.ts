@@ -11,11 +11,11 @@ export default defineNuxtConfig({
   },
   i18n: {
     locales: [
-      { code: 'en', domain: 'localhost:3000', file: 'en.json' },
-      { code: 'fr', domain: 'fr.localhost:3000', file: 'fr.json' },
-      { code: 'uk', domain: 'uk.localhost:3000', file: 'uk.json' }
+      { code: 'en', file: 'en.json' },
+      // { code: 'fr', domain: 'fr.localhost:3000', file: 'fr.json' },
+      // { code: 'uk', domain: 'uk.localhost:3000', file: 'uk.json' }
     ],
-    differentDomains: true,
+    // differentDomains: true,
     defaultLocale: 'en',
     langDir: '../locales/',
     detectBrowserLanguage: false
