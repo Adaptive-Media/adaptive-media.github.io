@@ -22,7 +22,9 @@ export default defineNuxtConfig({
   },
   ssr: false,
   app: {
-    baseURL: '/adaptive-media/',
+    baseURL: process.env.NODE_ENV === 'development'
+        ? '/'
+        : (process.env.NUXT_APP_BASE_URL),
     buildAssetsDir: 'assets'
   },
   nitro: {

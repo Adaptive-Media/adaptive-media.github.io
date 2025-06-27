@@ -11,7 +11,7 @@
             <Logo type="white" class="footer-logo" size="md" />
             <div class="footer-column">
                <router-link to="/">Categories</router-link>
-               <router-link to="/">About Us</router-link>
+               <router-link to="/about">About Us</router-link>
                <router-link to="/">Shipping Policy</router-link>
                <router-link to="/">Terms of Service</router-link>
                <router-link to="/">Privacy Policy</router-link>
@@ -41,7 +41,6 @@ footer {
     border-radius: 64px 64px 0px 0px;
     padding: 64px 0 24px 0;
 }
-
 
 
 .footer__container{
