@@ -19,5 +19,13 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     langDir: '../locales/',
     detectBrowserLanguage: false
+  },
+  ssr: false,
+  app: {
+    baseURL: '/adaptive-media/',
+    buildAssetsDir: 'assets'
+  },
+  nitro: {
+    preset: "github-pages"
   }
 })
