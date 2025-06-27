@@ -26,5 +26,14 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "github-pages",
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/api/product-categories',
+        '/api/popular-products',
+        '/api/pagination-data'
+      ]
+    }
   }
 })
