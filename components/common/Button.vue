@@ -4,38 +4,29 @@
   </button>
 </template>
 
-<script>
-export default {
-    props: {
-        text: {
-            type: String,
-            required: true,
-        },
-        size: {
-            type: String,
-            required: true,
-            default: 'md',
-            validator: (value) => ['xs', 'sm', 'md', 'lg'].includes(value),
-        },
-        rounded: {
-            type: String,
-            required: true,
-            default: 'md',
-            validator: (value) => ['xs', 'sm', 'md', 'lg'].includes(value),
-        },
-        type: {
-            type: String,
-        }
+<script setup>
+const props = defineProps({
+    text: {
+        type: String,
+        required: true,
     },
-    computed: {
-        buttonClass() {
-            return `button--${this.type} button--${this.size}`;
-        },
-        roundedClass() {
-            return `rounded--${this.rounded}`;
-        },
+    size: {
+        type: String,
+        default: 'md',
+        validator: (value) => ['xs', 'sm', 'md', 'lg'].includes(value),
+    },
+    rounded: {
+        type: String,
+        default: 'md',
+        validator: (value) => ['xs', 'sm', 'md', 'lg'].includes(value),
+    },
+    type: {
+        type: String,
     }
-}
+})
+
+const buttonClass = computed(() => `button--${props.type} button--${props.size}`)
+const roundedClass = computed(() => `rounded--${props.rounded}`)
 </script>
 
 <style scoped>

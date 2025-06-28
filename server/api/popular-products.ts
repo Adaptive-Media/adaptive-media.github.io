@@ -40,7 +40,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 40,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "ALLMAX BATTERY"
+            "brand": "ALLMAX BATTERY",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "amazon"
+
         },
         {
             "id": 4470439,
@@ -57,7 +60,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 22,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "Pure"
+            "brand": "Pure",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "amazon"
+
         },
         {
             "id": 4453046,
@@ -72,7 +78,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 17,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "Bingfu"
+            "brand": "Bingfu",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "amazon"
+
         },
         {
             "id": 4453046,
@@ -88,7 +97,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 17,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "Bingfu"
+            "brand": "Bingfu",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "ebay"
+
         },
         {
             "id": 4453046,
@@ -104,7 +116,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 17,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "Bingfu"
+            "brand": "Bingfu",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "amazon"
+
         },
         {
             "id": 4453046,
@@ -119,7 +134,10 @@ export default defineEventHandler(async (event) => {
             "discountPercentage": 17,
             "isDiscount": true,
             "shippingIsFree": true,
-            "brand": "Bingfu"
+            "brand": "Bingfu",
+            "description": "Lorem ipsum lorem ipsum",
+            "merchant": "ebay"
+
         }
 ]
            

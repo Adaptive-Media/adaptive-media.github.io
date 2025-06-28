@@ -22,40 +22,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CategoryPage',
-  
-  async setup() {
-    const route = useRoute()
-    const router = useRouter()
-    
-    const categoryData = ref(null)
-    
-    onMounted(() => {
-      if (history.state && history.state.categoryId) {
-        categoryData.value = history.state
-      }
-    })
-    
-    const selectedCategory = useState('selectedCategory', () => null)
-    
-    return {
-      categoryData,
-      selectedCategory,
-      categoryName: route.params.name
-    }
-  },
-  
-  methods: {
-    async loadCategoryData() {
-      try {
-        const response = await $fetch(`/api/category/${this.categoryName}`)
-        console.log('Category data loaded:', response)
-      } catch (error) {
-        console.error('Error loading category:', error)
-      }
-    }
+<script setup>
+const route = useRoute()
+const router = useRouter()
+
+const categoryData = ref(null)
+
+onMounted(() => {
+  if (history.state && history.state.categoryId) {
+    categoryData.value = history.state
+  }
+})
+
+const selectedCategory = useState('selectedCategory', () => null)
+const categoryName = route.params.name
+
+const loadCategoryData = async () => {
+  try {
+    const response = await $fetch(`/api/category/${categoryName}`)
+    console.log('Category data loaded:', response)
+  } catch (error) {
+    console.error('Error loading category:', error)
   }
 }
 </script>

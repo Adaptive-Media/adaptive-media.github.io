@@ -5,34 +5,29 @@
   </div>
 </template>
 
-<script>
-
-export default {
-    props: {
-        category: {
-            type: Object,
-            required: true
-        }
-    },
-    
-    methods: {
-        async goToCategory() {
-            const selectedCategory = useState('selectedCategory')
-            selectedCategory.value = {
-                categoryId: this.category.id,
-                categoryData: this.category
-            }
-            
-            console.log('Setting selectedCategory:', selectedCategory.value)
-            
-            await navigateTo(`/category/${this.category.name}`, {
-                state: {
-                    categoryId: this.category.id,
-                    categoryData: this.category
-                }
-            })
-        }
+<script setup>
+const props = defineProps({
+    category: {
+        type: Object,
+        required: true
     }
+})
+
+const goToCategory = async () => {
+    const selectedCategory = useState('selectedCategory')
+    selectedCategory.value = {
+        categoryId: props.category.id,
+        categoryData: props.category
+    }
+    
+    console.log('Setting selectedCategory:', selectedCategory.value)
+    
+    await navigateTo(`/category/${props.category.name}`, {
+        state: {
+            categoryId: props.category.id,
+            categoryData: props.category
+        }
+    })
 }
 </script>
 

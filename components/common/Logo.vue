@@ -4,38 +4,29 @@
     </router-link>
 </template>
 
-<script>
-    import logoBlack from '~/assets/img/logo.svg'
-    import logoWhite from '~/assets/img/logo-white.svg'
+<script setup>
+import logoBlack from '~/assets/img/logo.svg'
+import logoWhite from '~/assets/img/logo-white.svg'
 
-    export default {
-        name: 'Logo',
-        props: {
-            type: {
-                type: String,
-                default: 'black',
-                validator: (value) => {
-                    return ['black', 'white'].includes(value)
-                }
-            },
-            size: {
-                type: String,
-                default: 'sm',
-                validator: (value) => {
-                    return ['sm', 'md'].includes(value)
-                }
-            }
-        },
-        computed: {
-            logo() {
-                return this.type === 'black' ? logoBlack : logoWhite
-            },
-
-            logoClass() {
-                return `logo-image logo-image--${this.size}`
-            }
+const props = defineProps({
+    type: {
+        type: String,
+        default: 'black',
+        validator: (value) => {
+            return ['black', 'white'].includes(value)
+        }
+    },
+    size: {
+        type: String,
+        default: 'sm',
+        validator: (value) => {
+            return ['sm', 'md'].includes(value)
         }
     }
+})
+
+const logo = computed(() => props.type === 'black' ? logoBlack : logoWhite)
+const logoClass = computed(() => `logo-image logo-image--${props.size}`)
 </script>
 
 <style scoped>

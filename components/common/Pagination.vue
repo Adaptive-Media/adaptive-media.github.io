@@ -40,114 +40,109 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Pagination',
-  props: {
-    totalProducts: {
-      type: Number,
-      required: true
-    },
-    productsPerPage: {
-      type: Number,
-      default: 8
-    },
-    currentPage: {
-      type: Number,
-      default: 1
-    }
+<script setup>
+const props = defineProps({
+  totalProducts: {
+    type: Number,
+    required: true
   },
-  emits: ['page-change'],
-  computed: {
-    totalPages() {
-      return Math.ceil(this.totalProducts / this.productsPerPage)
-    },
-    paginationItems() {
-      const items = []
-      const total = this.totalPages
-      const current = this.currentPage
-      
-      if (total <= 5) {
-        for (let i = 1; i <= total; i++) {
-          items.push({
-            type: 'page',
-            value: i,
-            key: `page-${i}`
-          })
-        }
-      } else {
+  productsPerPage: {
+    type: Number,
+    default: 8
+  },
+  currentPage: {
+    type: Number,
+    default: 1
+  }
+})
+
+const emit = defineEmits(['page-change'])
+
+const totalPages = computed(() => Math.ceil(props.totalProducts / props.productsPerPage))
+
+const paginationItems = computed(() => {
+  const items = []
+  const total = totalPages.value
+  const current = props.currentPage
+  
+  if (total <= 5) {
+    for (let i = 1; i <= total; i++) {
+      items.push({
+        type: 'page',
+        value: i,
+        key: `page-${i}`
+      })
+    }
+  } else {
+    items.push({
+      type: 'page',
+      value: 1,
+      key: 'page-1'
+    })
+    
+    if (current <= 3) {
+      for (let i = 2; i <= 3; i++) {
         items.push({
           type: 'page',
-          value: 1,
-          key: 'page-1'
+          value: i,
+          key: `page-${i}`
         })
-        
-        if (current <= 3) {
-          for (let i = 2; i <= 3; i++) {
-            items.push({
-              type: 'page',
-              value: i,
-              key: `page-${i}`
-            })
-          }
-          
-          items.push({
-            type: 'dots',
-            key: 'dots-right'
-          })
-          
-          items.push({
-            type: 'page',
-            value: total,
-            key: `page-${total}`
-          })
-        } else if (current >= total - 2) {
-          items.push({
-            type: 'dots',
-            key: 'dots-left'
-          })
-          
-          for (let i = total - 2; i <= total; i++) {
-            items.push({
-              type: 'page',
-              value: i,
-              key: `page-${i}`
-            })
-          }
-        } else {
-          items.push({
-            type: 'dots',
-            key: 'dots-left'
-          })
-          
-          items.push({
-            type: 'page',
-            value: current,
-            key: `page-${current}`
-          })
-          
-          items.push({
-            type: 'dots',
-            key: 'dots-right'
-          })
-          
-          items.push({
-            type: 'page',
-            value: total,
-            key: `page-${total}`
-          })
-        }
       }
       
-      return items
-    }
-  },
-  methods: {
-    goToPage(page) {
-      if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
-        this.$emit('page-change', page)
+      items.push({
+        type: 'dots',
+        key: 'dots-right'
+      })
+      
+      items.push({
+        type: 'page',
+        value: total,
+        key: `page-${total}`
+      })
+    } else if (current >= total - 2) {
+      items.push({
+        type: 'dots',
+        key: 'dots-left'
+      })
+      
+      for (let i = total - 2; i <= total; i++) {
+        items.push({
+          type: 'page',
+          value: i,
+          key: `page-${i}`
+        })
       }
+    } else {
+      items.push({
+        type: 'dots',
+        key: 'dots-left'
+      })
+      
+      items.push({
+        type: 'page',
+        value: current,
+        key: `page-${current}`
+      })
+      
+      items.push({
+        type: 'dots',
+        key: 'dots-right'
+      })
+      
+      items.push({
+        type: 'page',
+        value: total,
+        key: `page-${total}`
+      })
     }
+  }
+  
+  return items
+})
+
+const goToPage = (page) => {
+  if (page >= 1 && page <= totalPages.value && page !== props.currentPage) {
+    emit('page-change', page)
   }
 }
 </script>

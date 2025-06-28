@@ -5,6 +5,7 @@
             -{{ product.discountPercentage }}%
         </div>
     </div>
+    <MerchantLogo :merchant="product.merchant" />
     <div class="product-card__image">
       <img :src="product.imagePrimaryUrl" alt="">
     </div>
@@ -13,7 +14,7 @@
             {{ product.title.slice(0, 28) }}...
         </div>
         <div class="product-card__text-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            {{ product.description }}
         </div>
 
         <div class="product-card__text-price">
@@ -36,54 +37,50 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Button from '~/components/common/Button.vue';
-export default {
-  props: {
-    product: {
-      type: Object,
-      required: true
-    }
-  },
-  components: {
-    Button
-  },
-  methods: {
-    getCurrencySymbol(currencyCode) {
-      const currencySymbols = {
-        'USD': '$',
-        'EUR': '€',
-        'GBP': '£',
-        'JPY': '¥',
-        'CAD': 'C$',
-        'AUD': 'A$',
-        'CHF': 'CHF',
-        'CNY': '¥',
-        'SEK': 'kr',
-        'NOK': 'kr',
-        'DKK': 'kr',
-        'PLN': 'zł',
-        'CZK': 'Kč',
-        'HUF': 'Ft',
-        'RUB': '₽',
-        'UAH': '₴',
-        'INR': '₹',
-        'KRW': '₩',
-        'BRL': 'R$',
-        'MXN': '$',
-        'SGD': 'S$',
-        'HKD': 'HK$',
-        'NZD': 'NZ$',
-        'ZAR': 'R',
-        'TRY': '₺',
-        'ILS': '₪',
-        'SAR': 'ر.س',
-        'AED': 'د.إ'
-      }
-      
-      return currencySymbols[currencyCode?.toUpperCase()] || currencyCode || '$'
-    }
+import MerchantLogo from '~/components/common/MerchatLogo.vue';
+
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true
   }
+})
+
+const getCurrencySymbol = (currencyCode) => {
+  const currencySymbols = {
+    'USD': '$',
+    'EUR': '€',
+    'GBP': '£',
+    'JPY': '¥',
+    'CAD': 'C$',
+    'AUD': 'A$',
+    'CHF': 'CHF',
+    'CNY': '¥',
+    'SEK': 'kr',
+    'NOK': 'kr',
+    'DKK': 'kr',
+    'PLN': 'zł',
+    'CZK': 'Kč',
+    'HUF': 'Ft',
+    'RUB': '₽',
+    'UAH': '₴',
+    'INR': '₹',
+    'KRW': '₩',
+    'BRL': 'R$',
+    'MXN': '$',
+    'SGD': 'S$',
+    'HKD': 'HK$',
+    'NZD': 'NZ$',
+    'ZAR': 'R',
+    'TRY': '₺',
+    'ILS': '₪',
+    'SAR': 'ر.س',
+    'AED': 'د.إ'
+  }
+  
+  return currencySymbols[currencyCode?.toUpperCase()] || currencyCode || '$'
 }
 </script>
 
@@ -200,6 +197,11 @@ export default {
         font-size: 18px;
         height: 40px;
         width: 65px;
+    }
+
+    .product-card {
+        max-width: 496px;
+        width: 100%;
     }
 }
 </style>

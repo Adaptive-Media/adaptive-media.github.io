@@ -78,104 +78,82 @@
 
 </template>
 
-<script>
+<script setup>
 import Button from '~/components/common/Button.vue';
 import CategoryCard from '~/components/home/CategoryCard.vue';
 import ProductCard from '~/components/home/ProductCard.vue';
 import Pagination from '~/components/common/Pagination.vue';
 import PropositionCard from '~/components/home/PropositionCard.vue';
 
-export default {
-  name: 'IndexPage',
-  components: {
-    Button,
-    CategoryCard,
-    ProductCard,
-    Pagination,
-    PropositionCard,
-  },
+const currentPage = ref(1)
+const productsPerPage = ref(6)
 
-  data() {
-    return {
-      propositions: [
-        {
-          id: 0,
-          title: 'Gratis verzending vanaf €50',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        },
-        {
-          id: 1,
-          title: 'Klanten geven ons een 9.4',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        },
-        {
-          id: 2,
-          title: 'Veilig & Achteraf betalen',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-        },
-      ],
-    }
+const propositions = ref([
+  {
+    id: 0,
+    title: 'Gratis verzending vanaf €50',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
   },
+  {
+    id: 1,
+    title: 'Klanten geven ons een 9.4',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+  },
+  {
+    id: 2,
+    title: 'Veilig & Achteraf betalen',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+  },
+])
+
+const [categoriesResult, productsResult, paginationResult] = await Promise.all([
+  useFetch('/api/product-categories', {
+    server: true, 
+    key: 'product-categories',
+    query: {
+      limit: '8',
+      offset: '0',
+    }
+  }),
+  useFetch('/api/popular-products', {
+    server: true, 
+    key: 'popular-products',
+    query: {
+      categoryId: null,
+      limit: productsPerPage,
+      offset: computed(() => (currentPage.value - 1) * productsPerPage.value),
+      sortBy: 'popular',
+      filter: null,
+    }
+  }),
+  useFetch('/api/pagination-data', {
+    server: true, 
+    key: 'pagination-data',
+    query: {
+      type: 'products',
+    }
+  })
+])
+
+if (categoriesResult.error.value) {
+  console.error('Categories error (SSR):', categoriesResult.error.value)
+}
+
+if (productsResult.error.value) {
+  console.error('Products error (SSR):', productsResult.error.value)
+} 
+
+console.log('Products (SSR):', productsResult.data.value)
+console.log('Pagination (SSR):', paginationResult.data.value)
+
+const categories = computed(() => categoriesResult.data.value?.categories || [])
+const products = computed(() => productsResult.data.value || [])
+const totalProducts = computed(() => paginationResult.data.value?.totalProductCount || 100)
+
+const handlePageChange = async (page) => {
+  currentPage.value = page
   
-  async setup() {
-    const currentPage = ref(1)
-    const productsPerPage = ref(6)
-    
-    const [categoriesResult, productsResult, paginationResult] = await Promise.all([
-      useFetch('/api/product-categories', {
-        server: true, 
-        key: 'product-categories',
-        query: {
-          limit: '8',
-          offset: '0',
-        }
-      }),
-      useFetch('/api/popular-products', {
-        server: true, 
-        key: 'popular-products',
-        query: {
-          categoryId: null,
-          limit: productsPerPage,
-          offset: computed(() => (currentPage.value - 1) * productsPerPage.value),
-          sortBy: 'popular',
-          filter: null,
-        }
-      }),
-      useFetch('/api/pagination-data', {
-        server: true, 
-        key: 'pagination-data',
-        query: {
-          type: 'products',
-        }
-      })
-    ])
-
-    if (categoriesResult.error.value) {
-      console.error('Categories error (SSR):', categoriesResult.error.value)
-    }
-
-    if (productsResult.error.value) {
-      console.error('Products error (SSR):', productsResult.error.value)
-    } 
-
-    console.log('Products (SSR):', productsResult.data.value)
-    console.log('Pagination (SSR):', paginationResult.data.value)
-
-    const handlePageChange = async (page) => {
-      currentPage.value = page
-      
-      await productsResult.refresh()
-    }
-
-    return {
-      categories: computed(() => categoriesResult.data.value?.categories || []),
-      products: computed(() => productsResult.data.value || []),
-      totalProducts: computed(() => paginationResult.data.value?.totalProductCount || 100),
-      currentPage,
-      productsPerPage,
-      handlePageChange
-    }
-  },
+  await productsResult.refresh()
 }
 </script>
 
@@ -342,7 +320,9 @@ export default {
 
   .product-card {
     margin: 0 auto;
-    max-width: 500px;
+    /* max-width: 500px; */
+    max-width: unset;
+    width: 100%;
   }
   
 }

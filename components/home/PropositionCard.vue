@@ -12,41 +12,38 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Shipping from '~/assets/img/home/shipping.svg';
 import Leaf from '~/assets/img/home/leaf.svg';
 import Mark from '~/assets/img/home/mark.svg';
-export default {
-  name: 'PropositionCard',
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
+
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
   },
-  methods: {
-    getImage(id) {
-      switch (id) {
-        case 0:
-          return Mark;
-        case 1:
-          return Shipping;
-        case 2:
-          return Leaf;
-        default:
-          return Shipping;
-      }
-    },
+  id: {
+    type: [String, Number],
+    required: true,
   },
-};
+  description: {
+    type: String,
+    required: true,
+  },
+})
+
+const getImage = (id) => {
+  switch (id) {
+    case 0:
+      return Mark;
+    case 1:
+      return Shipping;
+    case 2:
+      return Leaf;
+    default:
+      return Shipping;
+  }
+}
 </script>
 
 <style scoped>
