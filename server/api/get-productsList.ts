@@ -72,7 +72,9 @@ export default defineEventHandler(async (event) => {
           "discountPercentage": discountPercentage,
           "isDiscount": true,
           "shippingIsFree": Math.random() > 0.2, // 80% chance free shipping
-          "brand": brands[productId % brands.length]
+          "brand": brands[productId % brands.length],
+          "description": "Lorem ipsum lorem ipsum",
+          "merchant": Math.random() > 0.5 ? "amazon" : "ebay"
         })
       }
 

@@ -187,12 +187,16 @@ watch(categoryData, async (newCategoryData) => {
 
 .pagination-container {
   margin-top: 32px;
-  margin-bottom: 64px;
+  margin-bottom: 120px;
 }
 
 @media screen and (max-width: 1145px) {
   .products-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card{
+    max-width: unset;
   }
 }
 
@@ -204,7 +208,19 @@ watch(categoryData, async (newCategoryData) => {
 
   .pagination-container {
     margin-top: 24px;
-    margin-bottom: 32px;
+    margin-bottom: 64px;
+  }
+
+  .title {
+    color: var(--primary);
+    font-size: var(--text-md);
+  }
+  .filter-container__leftside .selected-sorted {
+    display: none;
+  }
+
+  .filter-container__rightside-item{
+    font-size: var(--text-xxs);
   }
 }
 </style>
