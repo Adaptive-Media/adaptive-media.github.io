@@ -22,7 +22,7 @@
           <div class="category-container__title-text">
             Popular <span>Categories</span>
           </div>
-          <div class="category-container__link">
+          <div class="category-container__link" @click="navigateTo('/categories')">
             <span>Check all Categories</span>
             <img src="~/assets/img/arrow-right.svg" alt="">
           </div>
@@ -52,25 +52,7 @@
         />
       </div>
 
-      <div class="proposition-container">
-        <div class="proposition-container__title">
-          <div class="proposition-container__title-text">
-            Our <span>Best Value</span> Proposition
-          </div>
-          <div class="proposition-container__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-        </div>
-        <div class="proposition-container__list">
-          <PropositionCard 
-            v-for="proposition in propositions" 
-            :key="proposition.id" 
-            :id="proposition.id" 
-            :title="proposition.title" 
-            :description="proposition.description" 
-          />
-        </div>
-      </div>
+      <BestProposition />
     </div>
 
    
@@ -83,28 +65,12 @@ import Button from '~/components/common/Button.vue';
 import CategoryCard from '~/components/home/CategoryCard.vue';
 import ProductCard from '~/components/home/ProductCard.vue';
 import Pagination from '~/components/common/Pagination.vue';
-import PropositionCard from '~/components/home/PropositionCard.vue';
+import BestProposition from '~/components/common/BestProposition.vue';
 
 const currentPage = ref(1)
 const productsPerPage = ref(6)
 
-const propositions = ref([
-  {
-    id: 0,
-    title: 'Gratis verzending vanaf €50',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-  },
-  {
-    id: 1,
-    title: 'Klanten geven ons een 9.4',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-  },
-  {
-    id: 2,
-    title: 'Veilig & Achteraf betalen',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-  },
-])
+
 
 const [categoriesResult, productsResult, paginationResult] = await Promise.all([
   useFetch('/api/product-categories', {
@@ -278,33 +244,6 @@ const handlePageChange = async (page) => {
   margin-bottom: 120px;
 }
 
-.proposition-container__title-text{
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
-  color: var(--primary);
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.proposition-container__title-text span {
-  color: var(--blue-400);
-}
-
-.proposition-container__description{
-  font-size: var(--text-sm);
-  color: var(--primary);
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 48px auto;
-}
-
-.proposition-container__list{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-bottom: 110px;
-}
-
 
 @media screen and (max-width: 1325px) {
   .hero-container{
@@ -399,13 +338,7 @@ const handlePageChange = async (page) => {
   }
 
 
-  .proposition-container__title-text {
-    font-size: var(--text-lg);
-  }
-
-  .proposition-container__description {
-    margin-bottom: 32px;
-  }
+ 
 
   .pagination-container {
     font-size: var(--text-md);

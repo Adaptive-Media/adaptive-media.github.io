@@ -71,7 +71,56 @@ export default defineEventHandler(async (event) => {
             "name": "Category 8",
             "translatedName": "Category 8",
             "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
-        }
+        },
+        {
+            "id": "9",
+            "name": "Category 9",
+            "translatedName": "Category 9",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },  
+        {
+            "id": "10",
+            "name": "Category 10",
+            "translatedName": "Category 10",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        {
+            "id": "11",
+            "name": "Category 11",
+            "translatedName": "Category 11",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        
+        {
+            "id": "12",
+            "name": "Category 12",
+            "translatedName": "Category 12",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        {
+            "id": "13",
+            "name": "Category 13",
+            "translatedName": "Category 13",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        {
+            "id": "14",
+            "name": "Category 14",
+            "translatedName": "Category 14",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        {
+            "id": "15",
+            "name": "Category 15",
+            "translatedName": "Category 15",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
+        {
+            "id": "16",
+            "name": "Category 16",
+            "translatedName": "Category 16",
+            "imageUrl": "https://i.imgur.com/oSkl4p2.jpeg"
+        },
         ]
         }
            

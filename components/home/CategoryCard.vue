@@ -22,7 +22,7 @@ const goToCategory = async () => {
     
     console.log('Setting selectedCategory:', selectedCategory.value)
     
-    await navigateTo(`/category/${props.category.name}`, {
+    await navigateTo(`/categories/${props.category.name}`, {
         state: {
             categoryId: props.category.id,
             categoryData: props.category
