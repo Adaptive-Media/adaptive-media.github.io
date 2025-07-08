@@ -42,6 +42,15 @@ const goToCategory = async () => {
     overflow: hidden;
     cursor: pointer;
     text-decoration: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
 }
 
 .category-card img {
@@ -49,6 +58,7 @@ const goToCategory = async () => {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .category-card span {
@@ -63,6 +73,7 @@ const goToCategory = async () => {
     font-weight: var(--font-bold);
     color: var(--primary);
     text-align: center;
+    height: 100%;
 }
 
 @media screen and (max-width: 768px) {

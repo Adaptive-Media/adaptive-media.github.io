@@ -20,7 +20,7 @@
             </div>
             <img src="~/assets/img/scrollBtn.svg" @click="scrollToTop" alt="scrollBtn" class="scroll-btn">
         </div>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div class="footer-disclaimer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </footer>
 </template>
 
@@ -77,13 +77,22 @@ footer {
 
 .footer__container .footer-column a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     font-family: 'Inter', sans-serif;
+    transition: opacity 0.3s ease;
 
+}
+
+.footer__container .footer-column a:hover {
+    opacity: 0.7;
 }
 
 .footer__container .footer-column div {
     font-family: 'Inter', sans-serif;
+}
+
+.footer-disclaimer {
+    padding: 0 20px;
 }
 
 footer div:last-child {

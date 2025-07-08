@@ -19,8 +19,8 @@
 
         <div class="product-card__text-price">
             <div class="price">
-                <div class="new-price">{{ getCurrencySymbol(product.priceCurrency) }}{{ product.priceAmount }}</div>
-                <div class="old-price">{{ getCurrencySymbol(product.priceCurrency) }}{{ product.priceBaseAmount }}</div>
+            <div class="new-price">{{ formatPrice(product.priceAmount, product.priceCurrency) }}</div>
+            <div class="old-price">{{ formatPrice(product.priceBaseAmount, product.priceCurrency) }}</div>
             </div>
             <div class="shipping" v-if="product.shippingIsFree">
                 <div class="shipping__icon">
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <Button text="TO THE OFFER" type="primary" size="full" rounded="md" />
+        <Button @click="navigateTo(`/products/${product.id}`)" text="TO THE OFFER" type="primary" size="full" rounded="md" />
 
     </div>
        
@@ -48,40 +48,6 @@ const props = defineProps({
   }
 })
 
-const getCurrencySymbol = (currencyCode) => {
-  const currencySymbols = {
-    'USD': '$',
-    'EUR': '€',
-    'GBP': '£',
-    'JPY': '¥',
-    'CAD': 'C$',
-    'AUD': 'A$',
-    'CHF': 'CHF',
-    'CNY': '¥',
-    'SEK': 'kr',
-    'NOK': 'kr',
-    'DKK': 'kr',
-    'PLN': 'zł',
-    'CZK': 'Kč',
-    'HUF': 'Ft',
-    'RUB': '₽',
-    'UAH': '₴',
-    'INR': '₹',
-    'KRW': '₩',
-    'BRL': 'R$',
-    'MXN': '$',
-    'SGD': 'S$',
-    'HKD': 'HK$',
-    'NZD': 'NZ$',
-    'ZAR': 'R',
-    'TRY': '₺',
-    'ILS': '₪',
-    'SAR': 'ر.س',
-    'AED': 'د.إ'
-  }
-  
-  return currencySymbols[currencyCode?.toUpperCase()] || currencyCode || '$'
-}
 </script>
 
 <style scoped>
@@ -126,6 +92,7 @@ const getCurrencySymbol = (currencyCode) => {
 .product-card .product-card__text {
     background: var(--grey-100);
     padding: 23px 24px 32px 24px;
+    height: 100%;
 }
 
 .product-card .product-card__text-title {

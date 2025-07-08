@@ -12,20 +12,12 @@
 
     <template v-for="item in paginationItems" :key="item.key">
       <button
-        v-if="item.type === 'page'"
         class="pagination__btn"
         :class="{ 'pagination__btn--active': currentPage === item.value }"
         @click="goToPage(item.value)"
       >
         {{ item.value }}
       </button>
-      
-      <span 
-        v-else-if="item.type === 'dots'"
-        class="pagination__dots"
-      >
-        ...
-      </span>
     </template>
 
     <button 
@@ -65,7 +57,7 @@ const paginationItems = computed(() => {
   const total = totalPages.value
   const current = props.currentPage
   
-  if (total <= 5) {
+  if (total <= 7) {
     for (let i = 1; i <= total; i++) {
       items.push({
         type: 'page',
@@ -74,65 +66,22 @@ const paginationItems = computed(() => {
       })
     }
   } else {
-    items.push({
-      type: 'page',
-      value: 1,
-      key: 'page-1'
-    })
+    let start = Math.max(1, current - 2)
+    let end = Math.min(total, current + 2)
     
-    if (current <= 3) {
-      for (let i = 2; i <= 3; i++) {
-        items.push({
-          type: 'page',
-          value: i,
-          key: `page-${i}`
-        })
+    if (end - start < 4) {
+      if (start === 1) {
+        end = Math.min(total, start + 4)
+      } else {
+        start = Math.max(1, end - 4)
       }
-      
-      items.push({
-        type: 'dots',
-        key: 'dots-right'
-      })
-      
+    }
+    
+    for (let i = start; i <= end; i++) {
       items.push({
         type: 'page',
-        value: total,
-        key: `page-${total}`
-      })
-    } else if (current >= total - 2) {
-      items.push({
-        type: 'dots',
-        key: 'dots-left'
-      })
-      
-      for (let i = total - 2; i <= total; i++) {
-        items.push({
-          type: 'page',
-          value: i,
-          key: `page-${i}`
-        })
-      }
-    } else {
-      items.push({
-        type: 'dots',
-        key: 'dots-left'
-      })
-      
-      items.push({
-        type: 'page',
-        value: current,
-        key: `page-${current}`
-      })
-      
-      items.push({
-        type: 'dots',
-        key: 'dots-right'
-      })
-      
-      items.push({
-        type: 'page',
-        value: total,
-        key: `page-${total}`
+        value: i,
+        key: `page-${i}`
       })
     }
   }
@@ -200,19 +149,8 @@ const goToPage = (page) => {
   height: 16px;
 }
 
-.pagination__dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  color: var(--grey-500);
-  font-size: var(--text-md);
-  font-weight: var(--font-medium);
-  user-select: none;
-}
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .pagination {
     gap: 4px;
@@ -224,10 +162,6 @@ const goToPage = (page) => {
     font-size: var(--text-sm);
   }
   
-  .pagination__dots {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-sm);
-  }
+
 }
 </style> 

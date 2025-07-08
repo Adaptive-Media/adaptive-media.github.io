@@ -1,13 +1,18 @@
 <template>
-    <div class="search__container">
-        <input type="text" placeholder="Search">
-        <button class="search__button">
+    <form class="search__container" @submit.prevent="search">
+        <input type="text" placeholder="Search" v-model="query">
+        <button @click.stop.prevent="search" class="search__button">
             <img src="~/assets/img/search.svg" alt="search">
         </button>
-    </div>
+    </form>
 </template>
 
 <script setup>
+const query = ref('')
+
+const search = () => {
+    console.log(query.value)
+}
 </script>
 
 <style scoped>

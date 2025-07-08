@@ -9,7 +9,7 @@
           </div>
           <img src="~/assets/img/home/underline.svg" alt="">
           <div class="hero-container__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </div>
           <Button text="Get Started" type="primary" size="sm" rounded="md" />
         </div>
@@ -129,6 +129,7 @@ const handlePageChange = async (page) => {
   padding-bottom: 64px;
   background: url('~/assets/img/home/hero.png') no-repeat center center;
   border-radius: var(--rounded-md);
+  background-size: cover;
   padding: 102px 32px 64px 32px;
   overflow: hidden;
   max-width: var(--container-size);
@@ -137,7 +138,6 @@ const handlePageChange = async (page) => {
 }
 
 .hero-container__text{
-  max-width: 445px;
   position: relative;
 }
 
@@ -211,6 +211,11 @@ const handlePageChange = async (page) => {
   cursor: pointer;
   gap: 8px;
   display: flex;
+  transition: opacity 0.3s ease;
+}
+
+.category-container__title .category-container__link:hover {
+  opacity: 0.7;
 }
 
 .category-container__list{
