@@ -1,0 +1,11 @@
+name = "pla-landing-page"
+account_id = "f229783f2f2fbf4767c64a47ea8515d8"
+compatibility_date = "2025-07-09"
+workers_dev = true
+
+main = "./.output/server/index.mjs"
+
+[build]
+command = "npm run build"
+[site]
+bucket = "./.output/public"

@@ -19,5 +19,9 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     langDir: '../locales/',
     detectBrowserLanguage: false
+  },
+  nitro: {
+    preset: 'cloudflare'
   }
+
 })
