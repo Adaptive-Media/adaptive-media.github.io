@@ -81,7 +81,12 @@ const closeMenu = () => {
     text-decoration: underline;
 }
 
-.menu:deep(.logo-image) {
-    max-width: 105px;
+
+@media screen and (max-width: 1024px) {
+    .menu:deep(.logo-image) {
+        max-width: 105px;
+    }
 }
+
+
 </style>
