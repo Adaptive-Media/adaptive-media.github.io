@@ -87,4 +87,11 @@ const goToCategory = async () => {
         max-height: 140px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .category-card img {
+        max-height: 180px;
+    }
+
+}
 </style>

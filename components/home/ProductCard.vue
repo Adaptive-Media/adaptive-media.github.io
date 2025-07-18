@@ -1,5 +1,5 @@
 <template>
-  <div class="product-card">
+  <div class="product-card" @click="navigateTo(`/products/${product.id}`)">
     <div class="discount" v-if="product.discountPercentage">
         <div class="discount__text">
             -{{ product.discountPercentage }}%
@@ -58,6 +58,13 @@ const props = defineProps({
     border: 2px solid var(--grey-100);
     overflow: hidden;
     position: relative;
+    transition: .3s;
+}
+
+.product-card:hover {
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
 }
 
 .discount{

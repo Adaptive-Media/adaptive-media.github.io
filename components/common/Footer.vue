@@ -18,7 +18,6 @@
                <router-link to="/">Return & Refund Policy</router-link>
               
             </div>
-            <img src="~/assets/img/scrollBtn.svg" @click="scrollToTop" alt="scrollBtn" class="scroll-btn">
         </div>
         <div class="footer-disclaimer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     </footer>
@@ -26,13 +25,6 @@
 
 <script setup>
 import Logo from '~/components/common/Logo.vue'
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
 </script>
 
 <style scoped>
@@ -70,14 +62,14 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    font-size: var(--text-md);
+    font-size: 18px;
     font-weight: var(--font-regular);
     color: white;
 }
 
 .footer__container .footer-column a {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
     font-family: 'Inter', sans-serif;
     transition: opacity 0.3s ease;
 
@@ -96,7 +88,7 @@ footer {
 }
 
 footer div:last-child {
-    font-size: 18px;
+    font-size: 16px;
     color: white;
     text-align: center;
 }
@@ -125,7 +117,7 @@ footer div:last-child {
         }
 
         footer div:last-child {
-            font-size: var(--text-sm);
+            font-size: 14px;
         }
     }
 
@@ -144,8 +136,9 @@ footer div:last-child {
         }
 
         .footer__container .footer-column {
-            font-size: var(--text-md);
+            font-size: var(--text-sm);
             text-align: center;
+            gap: 12px;
         }
 
         .footer__container {
@@ -158,7 +151,7 @@ footer div:last-child {
         }
 
         footer :deep(.logo-image) {
-            max-width: 265px;
+            max-width: 180px;
         }
 
 

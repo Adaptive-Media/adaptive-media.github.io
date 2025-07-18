@@ -1,7 +1,7 @@
 <template>
     <header>
         <form class="header__container container-md">
-            <Logo type="black" size="sm" />
+            <Logo :class="{ 'invisible' : menu }" type="black" size="sm" />
             <Search class="search-input" :class="{ 'search-expanded': showSearch }" @submit.prevent="search" />
             <div>
                 <form @submit.prevent="search" class="mobile-search" ref="mobileSearchRef">
@@ -10,7 +10,7 @@
                         <img src="~/assets/img/search.svg" alt="Search" class="search-icon">
                     </button>
                 </form>
-                <img @click="menu = !menu" @closeMenu="menu = false" class="header__menu" src="~/assets/img/menu.svg" alt="Burger Menu">
+                <img :class="{ 'invisible' : menu }" @click="menu = !menu" @closeMenu="menu = false" class="header__menu" src="~/assets/img/menu.svg" alt="Burger Menu">
             </div>
         </form>
     </header>
@@ -62,6 +62,11 @@ onUnmounted(() => {
     padding: 24px 0;
 }
 
+.invisible {
+    opacity: 0;
+    /* visibility: hidden; */
+}
+
 .header__menu {
     cursor: pointer;
 }
@@ -110,6 +115,7 @@ onUnmounted(() => {
     font-weight: 400;
     transition: width 0.3s ease;
     opacity: 0;
+    padding-right: 40px;
 }
 
 .mobile-search input.expanded {

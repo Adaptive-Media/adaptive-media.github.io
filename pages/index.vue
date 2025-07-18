@@ -328,10 +328,7 @@ const handlePageChange = async (page) => {
     display: none;
   }
 
-  .category-container__list {
-    gap: 32px;
-    grid-template-columns: repeat(2, 1fr);
-  }
+ 
 
   .product-preview__list {
     grid-template-columns: repeat(1, 1fr);
@@ -366,7 +363,18 @@ const handlePageChange = async (page) => {
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 600px) {
+  .category-container__list {
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+
+
+
+@media screen and (max-width: 400px) {
   .category-container__list {
     grid-template-columns: repeat(1, 1fr);
   }

@@ -38,7 +38,7 @@ const closeMenu = () => {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    background: rgba(16, 128, 229, 0.90);
+    background: rgba(16, 128, 229, .9);
 }
 
 .menu.active {
@@ -82,7 +82,7 @@ const closeMenu = () => {
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     .menu:deep(.logo-image) {
         max-width: 105px;
     }

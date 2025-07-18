@@ -35,6 +35,12 @@ height: 53px;
 display: flex;
 align-items: center;
 overflow: hidden;
+transition: .3s;
+}
+
+.merchant-logo:hover {
+    background: var(--grey-100);
+    cursor: pointer;
 }
 
 .merchant-logo img {

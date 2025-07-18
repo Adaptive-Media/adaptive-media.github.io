@@ -66,9 +66,19 @@
           </div>
         </div>
         <div class="filter-container__rightside">
-          <div class="filter-container__rightside-item">
-            <img src="~/assets/img/disclaimer.svg" alt="Disclaimer">
+          <div class="filter-container__rightside-item disclaimer-tooltip">
+            <div class="disclaimer-icon"></div>
             <span>Disclaimer</span>
+            <div class="tooltip-content">
+                <div class="tooltip-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                </div>
+            </div>
           </div>
           <div class="filter-container__rightside-item">Last updated on 12.05.2025</div>
         </div>
@@ -411,5 +421,76 @@ watch(categoryData, async (newCategoryData) => {
   .filter-container__rightside-item{
     font-size: var(--text-xxs);
   }
+}
+
+.disclaimer-tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+.disclaimer-tooltip .tooltip-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  opacity: 0;
+  font-size: var(--text-xxs);
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  width: 270px;
+  margin-top: 8px;
+}
+
+.disclaimer-tooltip .tooltip-content::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #333;
+}
+
+.disclaimer-tooltip:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.disclaimer-tooltip:hover {
+  color: white;
+  background: var(--blue-400);
+}
+
+.disclaimer-tooltip .tooltip-text {
+  font-size: 10px;
+  line-height: 1.4;
+  color: white;
+  text-align: left;
+  max-width: 235px;
+  text-align: center;
+}
+
+.disclaimer-icon {
+  width: 16px;
+  height: 16px;
+  background: #000;
+  -webkit-mask: url('~/assets/img/disclaimer.svg') no-repeat center;
+  mask: url('~/assets/img/disclaimer.svg') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: background-color 0.3s ease;
+}
+
+.disclaimer-tooltip:hover .disclaimer-icon {
+  background: var(--color-white);
 }
 </style>

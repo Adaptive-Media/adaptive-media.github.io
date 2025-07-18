@@ -46,6 +46,7 @@ const search = () => {
     font-family: 'Montserrat', sans-serif;
     font-size: var(--text-md);
     font-weight: 400;
+    padding-right: 50px
 }
 
 .search__container input::placeholder {

@@ -11,7 +11,7 @@
         <div v-if="product" class="product-info">
             <div class="photos-container">
                 <div class="active-photo">
-                    <img :src="activeImage" alt="Product Image" class="main-image">
+                    <img @click="openProductLink" :src="activeImage" alt="Product Image" class="main-image">
                 </div>
                 <div class="photos-list">
                     <div class="photo-item" :class="{ 'active': index === activeImageIndex }"
@@ -22,8 +22,8 @@
                 </div>
             </div>
             <div class="product-details-container">
-                <div class="product-title">{{ product.title }}</div>
-                <div class="main-photo mobile">
+                <div class="product-title" @click="openProductLink">{{ product.title }}</div>
+                <div class="main-photo mobile" @click="openProductLink">
                     <img :src="activeImage" alt="">
                 </div>
                 <div class="product-benefits">
@@ -366,6 +366,10 @@ const changeActiveImage = (index) => {
     } else {
         activeImageIndex.value = index
     }
+}
+
+const openProductLink = () => {
+    window.open(product.value.productUrl, '_blank')
 }
 
 const isDescriptionExpanded = ref(false)
@@ -1080,6 +1084,8 @@ line-height: 144%; /* 17.28px */
     color: var(--primary);
     font-size: var(--text-sm);
     font-weight: var(--font-bold);
+    flex-shrink: 0;
+    display: flex;
 }
 
 
