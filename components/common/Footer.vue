@@ -71,12 +71,12 @@ footer {
     color: white;
     text-decoration: underline;
     font-family: 'Inter', sans-serif;
-    transition: opacity 0.3s ease;
+    transition: text-decoration 0.3s ease;
 
 }
 
 .footer__container .footer-column a:hover {
-    opacity: 0.7;
+    text-decoration: none;
 }
 
 .footer__container .footer-column div {

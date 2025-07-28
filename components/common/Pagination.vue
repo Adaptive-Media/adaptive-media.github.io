@@ -1,9 +1,23 @@
 <template>
   <div class="pagination" v-if="totalPages > 1">
+    <!-- First page button -->
+    <button 
+      class="pagination__btn pagination__btn--arrow" 
+      :disabled="currentPage === 1"
+      @click="goToPage(1)"
+      title="First page"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M18 17L13 12L18 7M11 17L6 12L11 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Previous page button -->
     <button 
       class="pagination__btn pagination__btn--arrow" 
       :disabled="currentPage === 1"
       @click="goToPage(currentPage - 1)"
+      title="Previous page"
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -20,13 +34,27 @@
       </button>
     </template>
 
+    <!-- Next page button -->
     <button 
       class="pagination__btn pagination__btn--arrow" 
       :disabled="currentPage === totalPages"
       @click="goToPage(currentPage + 1)"
+      title="Next page"
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Last page button -->
+    <button 
+      class="pagination__btn pagination__btn--arrow" 
+      :disabled="currentPage === totalPages"
+      @click="goToPage(totalPages)"
+      title="Last page"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M6 17L11 12L6 7M13 17L18 12L13 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
   </div>
